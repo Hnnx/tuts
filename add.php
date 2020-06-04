@@ -1,9 +1,11 @@
 <?php
 
+$email = $title = $ingredients = '';
 $errors = array('email' => '', 'title' => '', 'ingredients'=> '' );
 
-if(isset($_POST['submit'])){
 
+
+if(isset($_POST['submit'])){
   //Chek Email
   if(empty($_POST['email'])){
     $errors['email'] = "An email is required <br>";
@@ -33,6 +35,14 @@ if(isset($_POST['submit'])){
       $errors['ingredients'] = "Ingredients must be comma separated";
     }
   }
+
+  if(array_filter($errors)){
+    echo "Errors";
+  } else {
+    header('Location: index.php');
+    exit;
+  }
+
 }
 
  ?>
@@ -45,15 +55,15 @@ if(isset($_POST['submit'])){
   <h4 class="center">Add a Pizza</h4>
   <form class="white" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
     <label>Your Email</label>
-    <input type="text" name="email" placeholder="example@mail.com">
+    <input type="text" name="email" placeholder="example@mail.com" value="<?php echo htmlspecialchars($email); ?>">
     <div class="red-text"><?php echo $errors['email']; ?>
     </div>
     <label>Pizza Title</label>
-    <input type="text" name="title" placeholder="">
+    <input type="text" name="title" placeholder="" value="<?php echo htmlspecialchars($title); ?>">
     <div class="red-text"><?php echo $errors['title']; ?>
     </div>
     <label>Ingredients</label>
-    <input type="text" name="ingredients" placeholder="">
+    <input type="text" name="ingredients" placeholder="" value="<?php echo htmlspecialchars($ingredients); ?>">
     <div class="red-text"><?php echo $errors['ingredients']; ?>
     </div>
 
