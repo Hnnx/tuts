@@ -36,13 +36,10 @@ if(isset($_POST['submit'])){
     }
   }
 
-  if(array_filter($errors)){
-    echo "Errors";
-  } else {
+  if(!array_filter($errors)){
     header('Location: index.php');
     exit;
   }
-
 }
 
  ?>
