@@ -28,9 +28,12 @@ mysqli_close($povezava);
 <h4 class="center grey-text">Pizzas!</h4>
 <div class="container">
   <div class="row">
+
     <?php foreach($pizzas as $pizza): ?>
+
       <div class="col s6 m3">
         <div class="card z-deptho-0">
+          <img src="img/pizza.svg" class="pizza" alt="">
           <div class="card-content center">
             <h6><?php echo htmlspecialchars($pizza['title']); ?></h6>
             <ul>
