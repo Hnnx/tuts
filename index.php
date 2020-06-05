@@ -6,57 +6,46 @@ function printr($data) {
    echo "</pre>";
 }
 
-//connect to SQLiteDatabase
-$conn = mysqli_connect('localhost','nejc01','phppizzatuts','vilka_pizza');
+include("inc/db_connect.php");
 
-
-if(!$conn){
-  echo "Connnection error:" . mysqli_connect_error();
-}
-
-// wirte query for all pizzas
 $sql = 'SELECT title,ingredients,id FROM pizzas ORDER BY created_at';
-
-// make query and get result
-$result = mysqli_query($conn, $sql);
-
-//Feth the resulting rows in an array
+$result = mysqli_query($povezava, $sql);
 $pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-//Free resulsts / close connection
-mysqli_free_result($result);
-mysqli_close($conn);
 
-//printr($pizzas);
+
+
+mysqli_free_result($result);
+mysqli_close($povezava);
+
 
  ?>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <?php include ("inc/header.php"); ?>
 
 <h4 class="center grey-text">Pizzas!</h4>
 <div class="container">
-
   <div class="row">
-    <?php foreach($pizzas as $pizza){ ?>
+    <?php foreach($pizzas as $pizza): ?>
       <div class="col s6 m3">
-        <div class="card z-depth-0">
+        <div class="card z-deptho-0">
           <div class="card-content center">
             <h6><?php echo htmlspecialchars($pizza['title']); ?></h6>
-          <div> <?php echo htmlspecialchars($pizza['ingredients']); ?></div>
+            <ul>
+              <?php foreach( explode(',' , $pizza['ingredients']) as $ing  ): ?>
+                <li><?php echo htmlspecialchars($ing); ?></li>
+              <?php endforeach; ?>
+            </ul>
           </div>
           <div class="card-action right-align">
-            <a href="#" class="brand-text">more info</a>
+            <a class="brand-text" href="detail.php?id=<?php echo $pizza['id']?>">MORE INFO</a>
           </div>
         </div>
       </div>
-    <?php } ?>
+    <?php endforeach; ?>
   </div>
 </div>
-
-
 <?php include ('inc/footer.php'); ?>
-
 </html>
