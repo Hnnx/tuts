@@ -27,6 +27,7 @@ mysqli_close($povezava);
 
 <h4 class="center grey-text">Pizzas!</h4>
 <div class="container">
+  <a href="sandbox.php">SB</a>
   <div class="row">
 
     <?php foreach($pizzas as $pizza): ?>
