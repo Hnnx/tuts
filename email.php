@@ -1,31 +1,23 @@
 #email sender php
 
-<?php 
+<?php
 
 $emAddress = $emSubject = $emBody = '' ;
 
+?>
 
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Email Sender</title>
+  </head>
+  <body>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+      <input type="text" name="username" value="">
+      <input type="text" name="email" value="">
+    </form>
 
-  <title>php Mail Sender</title>
-
-
-
-<link rel="stylesheet" href="css/styles.css?v=1.0">
-
-</head>
-
-<body>
-
-</body>
+  </body>
 </html>
-
-
-
-
-
-
