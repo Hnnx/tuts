@@ -15,8 +15,8 @@ $emAddress = $emSubject = $emBody = '' ;
   <body>
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-      <input type="text" name="username" value="">
-      <input type="text" name="email" value="">
+      <input type="text" name="username" value=""><br/>
+      <textbox rows="4" cols="50" name="emSubject">
     </form>
 
   </body>
